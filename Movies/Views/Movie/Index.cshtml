@@ -1,0 +1,51 @@
+﻿@model Movies.Models.Account
+
+@{
+    ViewBag.Title = "Movie List";
+}
+
+<h2>@Model.Name's Movie List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies.FirstOrDefault().Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies.FirstOrDefault().ReleaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies.FirstOrDefault().Genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Movies.FirstOrDefault().Price)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var movie in Model.Movies)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => movie.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => movie.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => movie.Genre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => movie.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = movie.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = movie.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = movie.Id })
+            </td>
+        </tr>
+    }
+</table>
